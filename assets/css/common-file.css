@@ -120,6 +120,14 @@
 .m-t-30 {margin-top: 30px;}
 .m-b-30 {margin-bottom: 30px;}
 
+@media screen and (max-width: 767px) {
+    .br-1-l{border: 0;}
+.br-r-1-l{border-right: 0;}
+.br-l-1-l{border-left: 0;}
+.br-t-1-l{border-top: 0;}
+.br-b-1-l{border-bottom: 0;}
+}
+
 @media screen and (max-width:576px) {
     .m-b-8-s{margin-bottom: 8px;}
     .m-b-12-s{margin-bottom: 12px;}

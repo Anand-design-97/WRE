@@ -32,6 +32,35 @@
 --map-property-marker-color: #002A4E;
 --map-property-marker-text-color: #FFFFFF;
 
+--ql-text-white: #FFFFFF;
+--ql-text-white-dim: rgba(255, 255, 255, .7);
+--ql-text-toolbar: #1e293b;
+--ql-text-toolbar-light: #64748b;
+--ql-accent: #3b82f6;
+--ql-accent-hover: #009CDE;
+--ql-hover-bg: rgba(59, 130, 246, .08);
+--ql-active-bg: rgba(59, 130, 246, .15);
+--ql-toolbar-bg: #f8fafc;
+
+--ql-transition: all .2s ease;
+--ql-content-font: var(--s-f);
+--ql-content-font-size: var(--f-s-3);
+--ql-content-line-height: 1.5;
+--ql-border: #e2e8f0;
+--ql-border-light: #cbd5e1;
+--ql-border-active: #3b82f6;
+
+--p-badge-normal-bg: #009CDE;
+--p-badge-normal-text: #FFFFFF;
+
+--p-badge-hover-bg: #002A4E;
+--p-badge-hover-text: #FFFFFF;
+
+--p-badge-highlight-bg: #FF0000;
+--p-badge-highlight-text: #FFFFFF;
+
+--caro-dot-active-bg: #002A4E;
+--caro-dot-inactive-bg: #BBBCBC;
 
 --txt-t: transparent;
 --bg-t: transparent;

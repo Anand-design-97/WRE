@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-design@latest/index.css">
+       <link rel="stylesheet" href="/assets/css/font.css">
+    <script src="/assets/js/main.js" defer></script>
+
+    <title>card-1</title>
+
+
+</head>
+
+<body>
+    <div ag-r="" ag-c="3/3 4/4 8/8 11/12 16/16" class="p-20">
+
+        <article ag-c="3/3 2/4 4/8 4/12 3/16-1" class="card p-30 s-p-r s-bc-c-3 b-r-4">
+            <p class="c-1 f-s-3 s-l-c-4 m-b-50 m-t-0 m-lr-0">“The Windermere team exceeded our expectations at every turn.
+                Their marketing strategy
+                was
+                comprehensive and our home sold above asking price in just two weeks.”</p>
+        
+            <figure class="profile-pic s-o-h im-w-100  p-0">
+                <img src="../assets/image/7DB26E61-026E-44D4-A2A7-B281CFD1E5C6_5.png" data-ratio="1:1" alt="Beverly Moon"
+                    class="s-of-cv s-d-b s-w-100 s-h-100 b-r-r a-r-6">
+            </figure>
+            <h2 class="c-1 f-s-4 f-w-5 s-ta-l m-b-0">MARY'S PLACE</h2>
+            <span class="c-1 f-s-2 s-ta-l m-b-0 m-t-8 f-w-4">Emergency Family Shelter</span>
+            <a href="#" class="s-d-b s-w-100 s-h-100 s-p-a ca-l s-bi-lg">MARY'S PLACE</a>
+        </article>
+
+
+
+      <article ag-c="{testimonial.agc}" class="card p-30 s-p-r s-bc-c-3 b-r-4">
+            <p class="c-1 f-s-3 s-l-c-4 m-b-50 m-t-0 m-lr-0">"{testimonial.quote}"</p>
+        
+            <figure class="profile-pic s-o-h im-w-100  p-0">
+                <img src="{testimonial.image}" data-ratio="1:1" alt="{testimonial.image}" title="{testimonial.image}"
+                    class="s-of-cv s-d-b s-w-100 s-h-100 b-r-r a-r-6">
+            </figure>
+            <h2 class="c-1 f-s-4 f-w-5 s-ta-l m-b-0">{testimonial.name}</h2>
+            <span class="c-1 f-s-2 s-ta-l m-b-0 m-t-8 f-w-4">{testimonial.role}</span>            
+        </article>
+
+    </div>
+</body>
+
+</html>
+

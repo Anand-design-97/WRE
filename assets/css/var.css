@@ -7,9 +7,13 @@
 --c-5: #000F1B;
 --c-6: #BBBCBC;
 --c-7: #707372;
- 
+
+--c-98: rgba(0, 0, 0, 0.1);
 --c-99: #FFFFFF;
 --c-100: #000000;
+
+--c-200: var(--c-1);
+--c-201: var(--c-2);
 
 --heading-color: #002A4E;
 --heading-em-color: #009CDE;
@@ -32,9 +36,54 @@
 --map-property-marker-color: #002A4E;
 --map-property-marker-text-color: #FFFFFF;
 
-
 --txt-t: transparent;
 --bg-t: transparent;
+
+--ql-text-color: var(--text-color, #000000);
+--ql-border:#3f3f46;
+--ql-border-light:#52525b;
+--ql-border-active:#60a5fa;
+--ql-radius-xl:12px;
+--ql-transition:.12s ease;
+--ql-content-bg:#09090b;        
+--ql-toolbar-bg:#1e1e21;     
+--ql-toolbar-color:#1e1e21;   
+--ql-menu-bg:#18181b;          
+--ql-menu-border:#2a2a30;  
+--ql-text-toolbar:#e4e4e7;
+--ql-text-toolbar-light:#a1a1aa;
+--ql-accent:#60a5fa;
+--ql-accent-hover:#93c5fd;
+--ql-hover-bg:rgba(255,255,255,.06);
+--ql-active-bg:rgba(96,165,250,.15);
+--ql-toolbar-icon-color-n:#a1a1aa;
+--ql-toolbar-icon-bg-n:transparent;
+--ql-toolbar-icon-color-hover:#f4f4f5;
+--ql-toolbar-icon-bg-hover:#2a2a2e;
+--ql-toolbar-icon-color-active:#60a5fa;
+--ql-toolbar-icon-bg-active:#2a2a2e;
+
+--p-badge-normal-bg: #009CDE;
+--p-badge-normal-text: #FFFFFF;
+
+--p-badge-highlight-bg: #FF0000;
+--p-badge-highlight-text: #FFFFFF;
+
+--caro-bullet-active-bg: #002A4E;
+--caro-bullet-inactive-bg: #BBBCBC;
+
+--b-c-1: #002A4E;   
+--b-c-2: #009CDE;   
+--b-c-3: #F2F2F2;   
+--b-c-4: #00213D;   
+--b-c-5: #000F1B;   
+--b-c-6: #BBBCBC;   
+--b-c-7: #707372;   
+--b-c-t: transparent;
+
+--b-width: 1px;
+--b-style: solid;
+--b-color: var(--b-c-1);
 
 --p-f: "Montserrat", sans-serif;
 --s-f: "Montserrat", sans-serif;
@@ -91,17 +140,6 @@
 --b-r-16: 32px;
 --b-r-r: 50%;
 
---size: 850;
 --sp: 0px;
 --fixedheight: calc(100vh - 0px);
-
-
 }
-@media (min-width: 768px) {
-    :root{--size: 1500;}
-}
-html{
-    font-size: clamp(1px,18px,calc(10*100vw/390));
-    font-size: clamp(1px,18px,calc(10*100vw/var(--size)));
-}
-html:has(.search-property-detailview){font-size: clamp(14px, calc(10 * 100vw / var(--size)), 18px);}

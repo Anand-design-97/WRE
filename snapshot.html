@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../assets/css/base.css"> -->
+    <link rel="stylesheet" href="../assets/css/var.css">
+    <!-- <link rel="stylesheet" href="http://localhost:5173/__merged__.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-design@latest/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+
+/* ==========================================
+   GLOBAL VARIABLES
+========================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+
+ .ps-divider{border:none;border-top:1px solid var(--c-3);margin:20px 0;}
+
+
+/* ==========================================
+   SECTION 2
+========================================== */
+
+
+/* Top Meta */
+
+
+
+/* Main */
+
+
+
+
+
+
+.property-mortgage{
+    margin-top:12px;
+    font-size:10px;
+    letter-spacing:2px;
+    color:#b28d48;
+    text-transform:uppercase;
+}
+
+/* Divider */
+
+.property-divider{
+    border-top:1px solid #ececec;
+}
+
+/* Stats */
+
+.property-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.stat-item{
+    text-align:center;
+    padding:28px 20px;
+    position:relative;
+}
+
+.stat-item:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    top:25%;
+    right:0;
+    width:1px;
+    height:50%;
+    background:#ececec;
+}
+
+.stat-value{
+    font-size:42px;
+    font-weight:300;
+    color:#000;
+}
+
+.stat-label{
+    margin-top:8px;
+    font-size:10px;
+    letter-spacing:3px;
+    color:#8a8a8a;
+    text-transform:uppercase;
+}
+
+/* Mobile */
+
+@media(max-width:992px){
+
+    .property-main{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .property-price-wrap{
+        text-align:left;
+    }
+
+    .property-address h1{
+        font-size:56px;
+    }
+
+    .property-price{
+        font-size:56px;
+    }
+}
+
+@media(max-width:768px){
+
+    .property-stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .property-address h1{
+        font-size:42px;
+    }
+
+    .property-price{
+        font-size:42px;
+    }
+
+    .property-meta{
+        flex-direction:column;
+        gap:5px;
+    }
+}
+/* ==========================================
+   SECTION 3
+========================================== */
+
+.property-section-2{
+    max-width:1400px;
+    margin:auto;
+    background:#fff;
+}
+
+.property-section-2 .property-top{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 0;
+    border-top:1px solid #ececec;
+}
+
+.property-section-2 .property-main{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:45px 0;
+}
+
+.property-section-2 .property-address h1{
+    font-family:var(--font-luxury);
+    font-size:78px;
+    font-weight:400;
+}
+
+.property-section-2 .property-price{
+    font-family:var(--font-luxury);
+    font-size:72px;
+    font-weight:400;
+}
+
+.property-section-2 .property-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.property-section-2 .stat-item{
+    text-align:center;
+    padding:30px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===================================
+     SECTION 1
+=================================== -->
+
+
+<section class="p-20 property-snapshot-1">
+  <div class="m-t-16 m-b-20">
+    <price class="s-d-f s-f-jc-fs p-f f-s-8 f-w-7 c-1">{property.formattedprice}</price>
+    <div class="s-d-f s-f-jc-fs m-t-6 s-f f-s-3 c-7">{property.fullAddress}</div>
+    <div class="m-t-8 s-d-f s-f-jc-fs s-f-ai-c g-8">
+      <span class="f-s-1 s-f l-h-2 p-lr-8 s-d-ib s-pb-n b-r-2 s-tt-u">{property.idcStatus}</span>
+      <span class="f-s-1 s-f l-h-2 p-lr-8 s-d-ib s-pb-h b-r-2 s-tt-u">{IsLuxury:"1"}</span>
+    </div>
+  </div>
+  <div class="s-d-f s-f-fw-w s-f-ai-c g-8 s-f f-s-4 c-1 b-t s-bc-3 p-t-20">
+    <span class="s-d-if s-f-ai-c g-4 s-ws-nw s-pipe s-bc-6 p-r-8">
+        <b class="f-w-7 s-f-3 c-1">{property.beds}</b>
+        Bedrooms
+    </span>
+    <span class="s-d-if s-f-ai-c g-4 s-ws-nw s-pipe s-bc-6 p-r-8">
+        <b class="f-w-7 s-f-3 c-1">{property.baths}</b>
+        Bathrooms
+    </span>
+    <span class="s-d-if s-f-ai-c g-4 s-ws-nw s-pipe s-bc-6 p-r-8">
+        <b class="f-w-7 s-f-3 c-1">{property.sqFt}</b>
+        Sqft
+    </span>
+    <span class="s-d-if s-f-ai-c g-4 s-ws-nw s-pipe s-bc-6 p-r-8">
+        {property.propertyType}
+    </span>
+    <span class="s-d-if s-f-ai-c g-4 s-ws-nw s-pipe s-bc-6">
+        MLS#<b class="f-w-7 s-f-3 c-1">{property.mlsNumber}</b>
+    </span>
+  </div>
+</section>
+
+
+<!-- ===================================
+     SECTION 2
+=================================== -->
+
+<section class="p-20 property-snapshot-2">
+    <div class="m-t-8 s-d-f s-f-jc-fs s-f-ai-c g-8">
+      <span class="f-s-1 s-f l-h-2 p-lr-8 s-d-ib s-pb-n b-r-2 s-tt-u">Active</span>
+      <span class="f-s-1 s-f l-h-2 p-lr-8 s-d-ib s-pb-h b-r-2 s-tt-u">Luxury</span>
+    </div>
+    <div class="s-d-f s-f-jc-sb s-f-ai-c s-f-fw-w p-t-8 g-8 p-b-20">
+        <h2 class="s-d-f s-f-jc-fs p-f f-s-7 f-w-5 c-1">349 Walsh RD ATHERTON,CALIFORNIA 94027</h2>
+        <price class="p-f f-s-7 f-w-6 c-1">$57,500,000</price>
+    </div>
+    <div class="property-divider"></div>
+    <div class="s-d-f s-f-fw-w s-f-jc-c">
+        <div class="s-f-f-a p-16 s-pipe">
+            <div class="stat-value">5</div>
+            <div class="stat-label">Bedrooms</div>
+        </div>
+        <div class="s-f-f-a stat-item">
+            <div class="stat-value">8</div>
+            <div class="stat-label">Bathrooms</div>
+        </div>
+        <div class="s-f-f-a p-16 stat-item">
+            <div class="stat-value">11,968</div>
+            <div class="stat-label">Sq. Feet</div>
+        </div>
+        <div class="s-f-f-a p-16 stat-item">
+            <div class="stat-value">2.41</div>
+            <div class="stat-label">Acre Lot</div>
+        </div>
+    </div>
+    <div class="property-divider"></div>
+</section>
+<!-- ===================================
+     SECTION 3
+=================================== -->
+
+
+<!-- <section class="property-section-2">
+
+    <div class="property-top">
+        <div>STATUS: ACTIVE | TYPE: LUXURY ESTATE</div>
+        <div>REF: 49201-X</div>
+    </div>
+
+    <div class="property-main">
+
+        <div class="property-address">
+            <h1>349 Walsh RD</h1>
+        </div>
+
+        <div class="property-price">
+            $57,500,000
+        </div>
+
+    </div>
+
+    <div class="property-stats">
+
+        <div class="stat-item">5 Bedrooms</div>
+        <div class="stat-item">8 Bathrooms</div>
+        <div class="stat-item">11,968 Sq.Ft</div>
+        <div class="stat-item">2.41 Acre</div>
+
+    </div>
+
+</section> -->
+
+</body>
+</html>

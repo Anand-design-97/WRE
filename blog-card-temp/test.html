@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme Preview</title>
+
+<style>
+:root{
+/* Base Colors */
+
+/* ==========================
+   Base Colors
+========================== */
+/* 
+--c-1: #F8F8F6;     
+--c-2: #FAFAF8;    
+--c-3: #FFFFFF;     
+
+--c-4: #F3F1EC;      
+--c-5: #ECE8E1;     
+--c-6: #DDD8D0;      
+--c-7: #7A7A7A;     
+
+--c-98: rgba(0,0,0,.08);
+
+--c-99: #FFFFFF;
+--c-100: #000000;
+
+--c-101: #F8F8F6;
+
+--c-200: var(--c-1);
+--c-201: var(--c-2);
+
+
+
+--heading-color: #222222;
+--heading-em-color: #7A7A7A;
+
+--banner-heading-color: #222222;
+--banner-subtitle-color: #4A4A4A;
+--banner-text-color: #7A7A7A;
+
+--section-title-color: #222222;
+--section-subtitle-color: #7A7A7A;
+--section-text-color: #4A4A4A;
+
+--text-color: #4A4A4A;
+--text-color-secondary: #7A7A7A;
+
+
+--link-color: #444444;
+--link-hover-color: #000000;
+--link-active-color: #666666;
+
+
+
+--dtl-search-bg: var(--c-3);
+
+--map-cluster-color: #222222;
+--map-cluster-text-color: #FFFFFF;
+
+--map-property-marker-color: #222222;
+--map-property-marker-text-color: #FFFFFF;
+
+
+
+--txt-t: transparent;
+--bg-t: transparent;
+
+--ql-text-color: var(--text-color);
+
+--ql-border: #DDD8D0;
+--ql-border-light: #ECE8E1;
+--ql-border-active: #7A7A7A;
+
+--ql-radius-xl: 12px;
+--ql-transition: .12s ease;
+
+--ql-content-bg: #FFFFFF;
+--ql-toolbar-bg: #F8F8F6;
+--ql-toolbar-color: #F8F8F6;
+
+--ql-menu-bg: #FFFFFF;
+--ql-menu-border: #DDD8D0;
+
+--ql-text-toolbar: #333333;
+--ql-text-toolbar-light: #7A7A7A;
+
+--ql-accent: #666666;
+--ql-accent-hover: #444444;
+
+--ql-hover-bg: rgba(0,0,0,.05);
+--ql-active-bg: rgba(0,0,0,.08);
+
+--ql-toolbar-icon-color-n: #888888;
+--ql-toolbar-icon-bg-n: transparent;
+
+--ql-toolbar-icon-color-hover: #000000;
+--ql-toolbar-icon-bg-hover: #F3F1EC;
+
+--ql-toolbar-icon-color-active: #444444;
+--ql-toolbar-icon-bg-active: #ECE8E1;
+
+
+--p-badge-normal-bg: #444444;
+--p-badge-normal-text: #FFFFFF;
+
+--p-badge-highlight-bg: #D32F2F;
+--p-badge-highlight-text: #FFFFFF;
+
+
+
+--caro-bullet-active-bg: #444444;
+--caro-bullet-inactive-bg: #DDD8D0;
+
+
+
+--b-c-1: var(--c-1);
+--b-c-2: var(--c-2);
+--b-c-3: var(--c-3);
+--b-c-4: var(--c-4);
+--b-c-5: var(--c-5);
+--b-c-6: var(--c-6);
+--b-c-7: var(--c-7);
+--b-c-t: transparent; */
+/* Primary Neutral */
+
+
+
+/* ==========================
+   Base Colors
+========================== */
+
+--c-1: #F8F8F6;
+--c-2: #F5F2EC;
+--c-3: #f1f1ee;
+
+--c-4: #F0EDE7;
+--c-5: #E7E3DC;
+--c-6: #D9D5CF;
+--c-7: #A29E97;
+
+--c-98: rgba(0,0,0,.08);
+
+/* Keep Default */
+--c-99: #FFFFFF;
+--c-100: #000000;
+
+--c-101: #F8F8F6;
+
+--c-200: var(--c-1);
+--c-201: var(--c-2);
+
+/* ==========================
+   Typography
+========================== */
+
+--heading-color: #222222;
+--heading-em-color: #8A847B;
+
+--banner-heading-color: #FFFFFF;
+--banner-subtitle-color: #F8F8F6;
+--banner-text-color: #ECE8E1;
+
+--section-title-color: #222222;
+--section-subtitle-color: #8A847B;
+--section-text-color: #4A4A4A;
+
+--text-color: #4A4A4A;
+--text-color-secondary: #6F6B64;
+
+/* ==========================
+   Links
+========================== */
+
+--link-color: #555555;
+--link-hover-color: #222222;
+--link-active-color: #444444;
+
+/* ==========================
+   Search / Maps
+========================== */
+
+--dtl-search-bg: var(--c-3);
+
+--map-cluster-color: #222222;
+--map-cluster-text-color: #FFFFFF;
+
+--map-property-marker-color: #222222;
+--map-property-marker-text-color: #FFFFFF;
+
+/* ==========================
+   Transparent
+========================== */
+
+--txt-t: transparent;
+--bg-t: transparent;
+
+/* ==========================
+   Quill Editor
+========================== */
+
+--ql-text-color: var(--text-color);
+
+--ql-border:#D9D5CF;
+--ql-border-light:#ECE8E1;
+--ql-border-active:#8A847B;
+
+--ql-radius-xl:12px;
+--ql-transition:.12s ease;
+
+--ql-content-bg:#FFFFFF;
+--ql-toolbar-bg:#F8F8F6;
+--ql-toolbar-color:#F8F8F6;
+
+--ql-menu-bg:#FFFFFF;
+--ql-menu-border:#D9D5CF;
+
+--ql-text-toolbar:#333333;
+--ql-text-toolbar-light:#8A847B;
+
+--ql-accent:#666666;
+--ql-accent-hover:#444444;
+
+--ql-hover-bg:rgba(0,0,0,.05);
+--ql-active-bg:rgba(0,0,0,.08);
+
+--ql-toolbar-icon-color-n:#888888;
+--ql-toolbar-icon-bg-n:transparent;
+
+--ql-toolbar-icon-color-hover:#000000;
+--ql-toolbar-icon-bg-hover:#F3F1EC;
+
+--ql-toolbar-icon-color-active:#444444;
+--ql-toolbar-icon-bg-active:#ECE8E1;
+
+/* ==========================
+   Badges
+========================== */
+
+--p-badge-normal-bg:#444444;
+--p-badge-normal-text:#FFFFFF;
+
+--p-badge-highlight-bg:#D32F2F;
+--p-badge-highlight-text:#FFFFFF;
+
+/* ==========================
+   Carousel
+========================== */
+
+--caro-bullet-active-bg:#555555;
+--caro-bullet-inactive-bg:#D9D5CF;
+
+/* ==========================
+   Borders
+========================== */
+
+--b-c-1: var(--c-1);
+--b-c-2: var(--c-2);
+--b-c-3: var(--c-3);
+--b-c-4: var(--c-4);
+--b-c-5: var(--c-5);
+--b-c-6: var(--c-6);
+--b-c-7: var(--c-7);
+--b-c-t: transparent;
+
+--b-width:1px;
+--b-style:solid;
+--b-color:var(--c-6);
+
+/* ==========================
+   Fonts
+========================== */
+
+--p-f: "Montserrat", sans-serif;
+--s-f: "Montserrat", sans-serif;
+--t-f: "Poppins", sans-serif;
+
+/* ==========================
+   Font Sizes
+========================== */
+
+--f-s-0: max(11px,min(11px,.7rem));
+--f-s-1: max(12px,min(12px,.8rem));
+--f-s-2: max(14px,min(14px,1.2rem));
+--f-s-3: max(16px,min(16px,1.6rem));
+--f-s-4: max(18px,min(18px,1.8rem));
+--f-s-5: max(20px,min(20px,2rem));
+--f-s-6: max(20px,min(24px,2.2rem));
+--f-s-7: max(25px,min(34px,3.4rem));
+--f-s-8: max(30px,min(40px,3.7rem));
+--f-s-9: max(35px,min(50px,4rem));
+--f-s-10: max(40px,min(70px,5.5rem));
+--f-s-11: max(35px,min(64px,4rem));
+--f-s-12: max(40px,min(90px,7rem));
+
+--body-font:max(16px,min(16px,1.6rem));
+--general-font-size:50px;
+
+/* ==========================
+   Font Weight
+========================== */
+
+--f-w-1:100;
+--f-w-2:200;
+--f-w-3:300;
+--f-w-4:400;
+--f-w-5:500;
+--f-w-6:600;
+--f-w-7:700;
+--f-w-b:bold;
+--f-w-n:normal;
+
+/* ==========================
+   Line Height
+========================== */
+
+--l-h-1:20px;
+--l-h-2:24px;
+--l-h-3:28px;
+--l-h-4:32px;
+--l-h-n:normal;
+
+/* ==========================
+   Border Radius
+========================== */
+
+--b-r-0:0px;
+--b-r-1:2px;
+--b-r-2:4px;
+--b-r-3:6px;
+--b-r-4:8px;
+--b-r-5:10px;
+--b-r-6:12px;
+--b-r-7:14px;
+--b-r-8:16px;
+--b-r-9:18px;
+--b-r-10:20px;
+--b-r-11:22px;
+--b-r-12:24px;
+--b-r-13:26px;
+--b-r-14:28px;
+--b-r-15:30px;
+--b-r-16:32px;
+--b-r-r:50%;
+
+/* ==========================
+   Layout
+========================== */
+
+--sp:0px;
+--fixedheight:calc(100vh - 0px);
+
+
+}
+/* Paste your :root here */
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--c-1);
+    color:var(--text-color);
+    padding:40px;
+}
+
+h1,h2,h3{
+    margin:0 0 10px;
+    color:var(--heading-color);
+}
+
+p{
+    color:var(--section-text-color);
+}
+
+.section{
+    background:var(--c-3);
+    border:1px solid var(--c-6);
+    border-radius:12px;
+    padding:30px;
+    margin-bottom:40px;
+}
+
+.colors{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;
+}
+
+.color{
+    border:1px solid var(--c-6);
+    border-radius:12px;
+    overflow:hidden;
+    background:#fff;
+}
+
+.swatch{
+    height:100px;
+}
+
+.info{
+    padding:15px;
+    font-size:14px;
+}
+
+.btn{
+    padding:12px 24px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+.primary{
+    background:var(--c-2);
+    color:var(--c-100);
+}
+
+.secondary{
+    background:var(--c-4);
+    color:var(--text-color);
+}
+
+.outline{
+    background:none;
+    border:1px solid var(--c-6);
+    color:var(--text-color);
+}
+
+.card{
+    background:var(--c-2);
+    padding:25px;
+    border-radius:12px;
+    border:1px solid var(--c-6);
+    margin-top:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid var(--c-6);
+    background:var(--c-99);
+    border-radius:8px;
+    color:var(--text-color);
+}
+
+.badge{
+    display:inline-block;
+    background:var(--p-badge-normal-bg);
+    color:var(--p-badge-normal-text);
+    padding:6px 14px;
+    border-radius:100px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Theme Preview</h1>
+
+<p>
+This page shows how your color palette looks in real UI elements.
+</p>
+
+<div class="section">
+
+<h2>Primary Palette</h2>
+
+<div class="colors">
+
+<div class="color">
+<div class="swatch" style="background:var(--c-1)"></div>
+<div class="info">--c-1</div>
+</div>
+
+<div class="color">
+<div class="swatch" style="background:var(--c-2)"></div>
+<div class="info">--c-2</div>
+</div>
+
+<div class="color">
+<div class="swatch" style="background:var(--c-3)"></div>
+<div class="info">--c-3</div>
+</div>
+
+<div class="color">
+<div class="swatch" style="background:var(--c-4)"></div>
+<div class="info">--c-4</div>
+</div>
+
+<div class="color">
+<div class="swatch" style="background:var(--c-5)"></div>
+<div class="info">--c-5</div>
+</div>
+
+<div class="color">
+<div class="swatch" style="background:var(--c-6)"></div>
+<div class="info">--c-6</div>
+</div>
+
+<div class="color">
+<div class="swatch" style="background:var(--c-7)"></div>
+<div class="info">--c-7</div>
+</div>
+
+<div class="color">
+<div class="swatch" style="background:var(--c-99)"></div>
+<div class="info">--c-99</div>
+</div>
+
+<div class="color">
+<div class="swatch" style="background:var(--c-100)"></div>
+<div class="info" style="color:white;">--c-100</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Typography</h2>
+
+<h1>Main Heading</h1>
+
+<h3 style="color:var(--heading-em-color)">
+Highlighted Heading
+</h3>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.
+</p>
+
+<a href="#" style="color:var(--link-color)">
+Example Link
+</a>
+
+</div>
+
+<div class="section">
+
+<h2>Buttons</h2>
+
+<button class="btn primary">Primary</button>
+
+<button class="btn secondary">Secondary</button>
+
+<button class="btn outline">Outline</button>
+
+</div>
+
+<div class="section">
+
+<h2>Card</h2>
+
+<div class="card">
+
+<h3>Modern Card</h3>
+
+<p>
+This card uses your palette colors.
+</p>
+
+<span class="badge">
+Badge
+</span>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Form</h2>
+
+<input placeholder="Type something...">
+
+</div>
+
+</body>
+</html>

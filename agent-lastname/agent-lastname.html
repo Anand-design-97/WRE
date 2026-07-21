@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-design@latest/index.css">
+    <link rel="stylesheet" href="/assets/css/font.css">
+    <script src="/assets/js/main.js" defer></script>
+
+    <title>card-1</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="s-d-f g-30">
+
+        <div class="p-20">
+            <h1 class="m-t-0">
+                <span class="f-s-7 c-99 f-w-5 s-tt-u">{agent.fullName}</span>
+            </h1>
+
+            <div>
+                <div class="s-f-fw-w s-d-f s-f-ai-c m-b-12">
+                    <span class="c-2 f-s-4 f-w-6 s-tt-u im-w-100">MOBILE:</span>
+                    <span class="c-99 f-s-4 f-w-4">{agent.mobilePhone}</span>
+                </div>
+
+                <div class="s-f-fw-w s-d-f s-f-ai-c m-b-12">
+                    <span class="c-2 f-s-4 f-w-6 s-tt-u im-w-100">OFFICE:</span>
+                    <span class="c-99 f-s-4 f-w-4">{agent.businessPhone}</span>
+                </div>
+
+                <div class="s-f-fw-w s-d-f s-f-ai-c m-b-12">
+                    <span class="c-2 f-s-4 f-w-6 s-tt-u im-w-100">EMAIL:</span>
+                    <span class="c-99 f-s-4 f-w-4">{agent.emailAddress1}</span>
+                </div>
+            </div>
+
+            <div>
+                <p class="f-s-4 c-99 m-b-0 m-t-16 p-t-16">Windermere Office Legal Name</p>
+                <p class="f-s-4 c-99">License: {agent.licenseNo}</p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="p-20">
+            <h1 class="m-t-0">
+                <span class="f-s-7 c-99 f-w-5 s-tt-u">tracy agent</span>
+            </h1>
+
+            <div>
+                <div class="s-f-fw-w s-d-f s-f-ai-c m-b-12">
+                    <span class="c-2 f-s-4 f-w-6 s-tt-u im-w-100">MOBILE:</span>
+                    <span class="c-99 f-s-4 f-w-4">123-456-7890</span>
+                </div>
+
+                <div class="s-f-fw-w s-d-f s-f-ai-c m-b-12">
+                    <span class="c-2 f-s-4 f-w-6 s-tt-u im-w-100">OFFICE:</span>
+                    <span class="c-99 f-s-4 f-w-4">098-765-4321</span>
+                </div>
+
+                <div class="s-f-fw-w s-d-f s-f-ai-c m-b-12">
+                    <span class="c-2 f-s-4 f-w-6 s-tt-u im-w-100">EMAIL:</span>
+                    <span class="c-99 f-s-4 f-w-4">tracy.agent@example.com</span>
+                </div>
+            </div>
+
+            <div>
+                <p class="f-s-4 c-99 m-b-0 m-t-16 p-t-16">Windermere Office Legal Name</p>
+                <p class="f-s-4 c-99">License: 000000</p>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    </section>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<article ag-c="{agent.agc}" class="s-a-n s-p-r s-bc-c-3 b-r-4 s-d-f s-f-fd-c m-8 p-0 s-f-ai-c s-o-h">
+
+    <figure class="profile-pic p-0">
+        <img src="{agent.image}" data-ratio="1:1" alt="{agent.fullName}" title="{agent.fullName}"
+            class="s-of-cv s-d-b s-w-100 s-h-100  a-r-6 ">
+    </figure>
+    <header class="p-b-16">
+        <h2 class="c-1 f-s-5 f-w-6 s-ta-l m-b-16">{agent.fullName}</h2>
+        <span class="c-1 f-s-2 s-ta-l m-b-0 m-t-8 f-w-5 s-d-b">{agent.professionalTitle}</span>
+        <span class="c-1 f-s-2 s-ta-l m-b-16 m-t-8 f-w-5 s-d-b">{agent.state},{agent.city}</span>
+        <a href="{agent.Link}" title="Contact" class="btn-1 s-d-ib m-t-16 s-ta-c">CONTACT </a>
+    </header>
+</article>

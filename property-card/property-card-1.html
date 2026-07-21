@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-design@latest/index.css">
+    <script src="/assets/js/main.js" defer></script>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <section ag-r ag-c="3/3 4/4 8/8 12/12 16/16" class="s-f-jc-c s-f-ai-c">
+
+        <article ag-c="3/3 4/4 4/8 4/12 4/16" class="s-d-f s-f-fd-c m-8 p-0 s-p-r xs-b-w">
+
+            <figure class="s-w-100 s-p-r m-b-16 b-r-1">
+                <img class="a-r-5 s-w-100 s-of-cv s-d-b b-r-1 " data-ratio="27:14" alt="View More About ..."
+                    src={property.photos}>
+                <div class="nav s-p-a s-w-a s-b-0 s-r-0 b-r-1 p-0 c-99 m-r-4 s-bc-c-98">
+                    <label aria-label="prev" class="prev s-c-p"><i class="aga-keyboard-arrow-left"></i></label><label
+                        aria-label="next" class="next s-c-p"><i class="aga-keyboard-arrow-right"></i></label>
+                </div>
+                <div class="z-9 s-p-a s-w-a s-t-0 s-r-0 m-t-4">
+                    <span data-agora-icon="&#xe93f" aria-label="Full View" role="button"
+                        onclick="openImageGallery(this)" class="ca-f-b-1 s-d-b s-c-p s-br-2 m-b-8 c-99 s-d-n"
+                        title="Full View"></span>
+                    <input type="hidden" />
+                    <span data-agora-icon="&#xe922" role="button" aria-label="Favourite" href="javascript:void(0);"
+                        title="Save" class="ca-f-b-1 s-d-b s-c-p s-br-2 s-d-n c-99"></span>
+                    <span data-agora-icon="&#xe923" role="button" aria-label="Save" href="javascript:void(0);"
+                        title="Favorite" class="ca-f-b-1 s-d-b s-c-p s-br-2 c-99"></span>
+
+                </div>
+            </figure>
+
+            <span class="f-s-7 f-w-5 c-10 p-f s-d-b m-b-8 m-t-4 ">{property.listPrice}</span>
+            <h2 class="t-h-2 f-w-4 m-t-4 m-b-12 s-w-100  s-to-e s-o-h s-ws-nw">{property.address}
+            </h2>
+
+            <a href="/test" title="View More About ... " class="s-d-b s-w-100 s-h-100 s-p-a ca-l s-bi-lg">{property.address}</a>
+
+            <i class="s-fst-n s-ff-s-2 s-w-100 bbs s-d-f m-tb-8 ">
+                <span class="s-d-f s-f-fd-c s-tt-u b-r g-12 s-bc-6 p-r-20">
+                    <span class="f-s-1 f-w-6">Beds</span>
+                    <b class="f-s-5">{property.beds}</b>
+                </span>
+
+                <span class="s-d-f s-f-fd-c s-tt-u b-r g-12 s-bc-6 p-lr-20">
+                    <span class="f-s-1 f-w-6">Baths</span>
+                    <b class="f-s-5">{property.baths}</b>
+                </span>
+
+                <span ag-l-m="" class="p-r-4 s-d-f s-f-fd-c s-tt-u f-s-5 f-w-6 g-12 p-l-20"><span
+                        class="f-s-1 f-w-6">Sqft</span> {property.sqft} </span>
+            </i>
+            <div class="s-d-f s-f-jc-sb s-f  m-tb-8 s-w-100">
+                <span class="f-s-2 s-d-i s-f  m-tb-8">MLS#:&nbsp;{property.mlsNumber}</span>
+                <span class="f-s-2 s-d-i s-f  m-tb-8"><b class="">{property.propertyType}</b></span>
+            </div>
+            <div class="s-d-f s-f-jc-sb s-f s-f-ai-c  m-tb-8 s-w-100">
+                <img loading="lazy" alt="{property.address}" title="{property.address}" class="mls-logo p-r-8"
+                    src="https://cdn-cws.datafloat.com/IBP/images/mls/HAR.png" loading="lazy" />
+                <span class="f-s-2 s-d-i">Listing courtesy of {property.listingCourtesyOf}</span>
+            </div>
+
+            <div class="s-p-a">
+                <div class="">
+                    <span
+                        class="l-type xs-d-n oh m-tb-4 f-s-1 s-f l-h-2 m-l-4 p-lr-8 s-d-ib bg-c-2 c-99 b-r-1 s-tt-u"><i
+                            class="s-d-b s-fst-n">Open House</i> <span aria-label="openhouse" class="ohd s-d-n"></span></span>
+                    <span
+                        class="l-type status m-tb-4 f-s-1 s-f l-h-2 m-l-4 s-d-ib p-lr-8 bg-c-1 c-99 b-r-1 s-tt-u">{property.status}</span>
+                    <span class="pr s-d-n l-type m-tb-4 f-s-1 s-f l-h-2 m-l-4 s-d-ib p-lr-8 b-r-1 s-tt-u"><i
+                            class="s-fst-n" data-agora-icon-right="">Price Reduced
+                        </i>{property.listPrice}</span>
+                    <span class="nl s-d-n l-type m-tb-4  f-s-1 s-f l-h-2 m-l-4 s-d-ib p-lr-8 b-r-1 s-tt-u">New
+                        Listing</span>
+                    <span
+                        class="el s-d-n l-type m-tb-4  f-s-1 s-f l-h-2 m-l-4 s-d-ib p-lr-8 b-r-1 s-tt-u">Exclusive</span>
+                    <span class="vt s-d-n l-type m-tb-4 f-s-1 s-f l-h-2 m-l-4 s-d-ib p-lr-8 b-r-1 s-tt-u">Virtual
+                        Tour</span>
+                </div>
+            </div>
+        </article>
+    </section>
+
+</body>
+
+</html>

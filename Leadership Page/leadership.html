@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/js/main.js" defer></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div id="senior-leadership"></div>
+<div id="co-president"></div>
+<div id="executive-team"></div>
+<div id="footer"></div>
+
+<script>
+    function loadHTML(id, file) {
+  fetch(file)
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById(id).innerHTML = data;
+    });
+}
+
+loadHTML("co-president", "co-president.html");
+loadHTML("executive-team", "executive-team.html");
+loadHTML("senior-leadership", "senior-leadership.html");
+loadHTML("footer", "../home-page/Footer_1.html");
+</script>
+</body>
+</html>

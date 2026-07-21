@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Client Directory Datatable</title>
+  <style>
+    :root {
+      --bg-main: #f8f9fa;
+      --card-bg: #ffffff;
+      --border-color: #f1f3f5;
+      --text-primary: #1a1d20;
+      --text-secondary: #868e96;
+      --primary-purple: #6366f1;
+      --status-active-bg: #e6fcf5;
+      --status-active-text: #0ca678;
+      --status-inactive-bg: #f1f3f5;
+      --status-inactive-text: #495057;
+      --danger-red: #fa5252;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      margin: 0;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .datatable-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+    }
+
+    /* ---------------------------------------------------- */
+    /* TOP CONTROL TOOLBAR SYSTEM                           */
+    /* ---------------------------------------------------- */
+    .top-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .status-tabs {
+      display: flex;
+      background: #f1f3f5;
+      padding: 4px;
+      border-radius: 8px;
+    }
+
+    .tab {
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .tab.active {
+      background: #ffffff;
+      color: var(--text-primary);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .right-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-wrapper input {
+      padding: 8px 36px 8px 36px;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      font-size: 13px;
+      width: 220px;
+      outline: none;
+      background: #fdfdfd;
+    }
+
+    .search-icon-left {
+      position: absolute;
+      left: 12px;
+      color: #adb5bd;
+      font-size: 14px;
+    }
+
+    .shortcut-badge {
+      position: absolute;
+      right: 10px;
+      font-size: 11px;
+      color: #adb5bd;
+      border: 1px solid #e9ecef;
+      background: #ffffff;
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border: 1px solid #dee2e6;
+      background: #ffffff;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    /* ---------------------------------------------------- */
+    /* GRID LAYOUT STRUCTURE                                */
+    /* ---------------------------------------------------- */
+    .grid-header, .grid-row {
+      display: grid;
+      grid-template-columns: 40px 2.2fr 1.5fr 1.5fr 1.5fr 1.2fr 50px;
+      align-items: center;
+      padding: 12px 16px;
+    }
+
+    .grid-header {
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .grid-row {
+      border-bottom: 1px solid var(--border-color);
+      font-size: 14px;
+    }
+
+    .grid-row:hover {
+      background-color: #fafbfc;
+    }
+
+    .cell-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-sort-icon {
+      font-size: 11px;
+      color: #adb5bd;
+    }
+
+    .custom-checkbox {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 1px solid #ced4da;
+      cursor: pointer;
+    }
+
+    /* ---------------------------------------------------- */
+    /* CONTENT CELL DECORATORS                              */
+    /* ---------------------------------------------------- */
+    .identity-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: #eee;
+    }
+
+    .text-stack {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .primary-text {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .secondary-text {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 1px;
+    }
+
+    .company-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .company-logo {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .status-pill.active {
+      background-color: var(--status-active-bg);
+      color: var(--status-active-text);
+    }
+
+    .status-pill.inactive {
+      background-color: var(--status-inactive-bg);
+      color: var(--status-inactive-text);
+    }
+
+    /* ---------------------------------------------------- */
+    /* INTERACTIVE DROP DOWN ACTIONS MENU                   */
+    /* ---------------------------------------------------- */
+    .action-menu-container {
+      position: relative;
+      display: inline-block;
+      text-align: right;
+    }
+
+    .three-dots-trigger {
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      user-select: none;
+      transition: background 0.15s ease;
+    }
+
+    .three-dots-trigger:hover {
+      background-color: #e9ecef;
+      color: var(--text-primary);
+    }
+
+    /* Dropdown Panel Content */
+    .actions-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      z-index: 100;
+      min-width: 130px;
+      background-color: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 6px 0;
+      text-align: left;
+    }
+
+    /* Display the dropdown when hovering over the container block */
+    .action-menu-container:hover .actions-dropdown {
+      display: block;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: var(--text-primary);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.1s ease;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f8f9fa;
+    }
+
+    .dropdown-item.delete-item {
+      color: var(--danger-red);
+    }
+
+    .dropdown-item.delete-item:hover {
+      background-color: #fff5f5;
+    }
+
+    .dropdown-icon {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* ---------------------------------------------------- */
+    /* MODERN FOOTER PAGINATION CONTAINER                   */
+    /* ---------------------------------------------------- */
+    .footer-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .pagination-controls {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .page-nav-btn {
+      padding: 8px 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-primary);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid #dee2e6;
+    }
+
+    .page-number-btn {
+      padding: 8px 14px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-right: 1px solid #dee2e6;
+    }
+
+    .page-number-btn.current {
+      background: #f1f3f5;
+      color: var(--text-primary);
+    }
+
+    .page-number-btn:last-child, .page-nav-btn:last-child {
+      border-right: none;
+    }
+
+    .rows-per-page select {
+      padding: 6px 10px;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      background: #ffffff;
+      font-size: 13px;
+      color: var(--text-primary);
+      outline: none;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="datatable-container">
+    
+    <div class="top-toolbar">
+      <div class="status-tabs">
+        <div class="tab active">All</div>
+        <div class="tab">Active</div>
+        <div class="tab">Inactive</div>
+      </div>
+      
+      <div class="right-controls">
+        <div class="search-wrapper">
+          <span class="search-icon-left">🔍</span>
+          <input type="text" placeholder="Search...">
+          <span class="shortcut-badge">⌘K</span>
+        </div>
+        <button class="action-btn">
+          <span>⚙️</span> Filter
+        </button>
+        <button class="action-btn">
+          <span>↕️</span> Sort By
+        </button>
+      </div>
+    </div>
+
+    <div class="grid-table">
+      
+      <div class="grid-header">
+        <div><input type="checkbox" class="custom-checkbox"></div>
+        <div class="cell-header">Client <span class="header-sort-icon">↕</span></div>
+        <div class="cell-header">Title <span class="header-sort-icon">↕</span></div>
+        <div class="cell-header">Company <span class="header-sort-icon">↕</span></div>
+        <div class="cell-header">Contact Type <span class="header-sort-icon">↕</span></div>
+        <div class="cell-header">Status <span class="header-sort-icon">↕</span></div>
+        <div></div>
+      </div>
+
+      <div class="grid-row">
+        <div><input type="checkbox" class="custom-checkbox"></div>
+        <div class="identity-cell">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="avatar" alt="Brooklyn">
+          <div class="text-stack">
+            <span class="primary-text">Brooklyn Simmons</span>
+            <span class="secondary-text">brooklyn@gmail.com</span>
+          </div>
+        </div>
+        <div>Marketing Manager</div>
+        <div class="company-cell">
+          <img src="https://cdn-images-1.medium.com/max/1200/1*986Wn2w88FIn8g3vdbf_vA.png" class="company-logo" alt="Monday">
+          Monday.com
+        </div>
+        <div>Potential Customer</div>
+        <div><span class="status-pill active">Active</span></div>
+        
+        <div class="action-menu-container">
+          <div class="three-dots-trigger">⋮</div>
+          <div class="actions-dropdown">
+            <div class="dropdown-item"><span class="dropdown-icon">👁️</span> View</div>
+            <div class="dropdown-item"><span class="dropdown-icon">✏️</span> Edit</div>
+            <div class="dropdown-item delete-item"><span class="dropdown-icon">🗑️</span> Delete</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-row">
+        <div><input type="checkbox" class="custom-checkbox"></div>
+        <div class="identity-cell">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" class="avatar" alt="Annette">
+          <div class="text-stack">
+            <span class="primary-text">Annette Black</span>
+            <span class="secondary-text">annette@gmail.com</span>
+          </div>
+        </div>
+        <div>HR Assistant</div>
+        <div class="company-cell">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" class="company-logo" alt="Notion">
+          Notion
+        </div>
+        <div>Current Customer</div>
+        <div><span class="status-pill inactive">Inactive</span></div>
+        
+        <div class="action-menu-container">
+          <div class="three-dots-trigger">⋮</div>
+          <div class="actions-dropdown">
+            <div class="dropdown-item"><span class="dropdown-icon">👁️</span> View</div>
+            <div class="dropdown-item"><span class="dropdown-icon">✏️</span> Edit</div>
+            <div class="dropdown-item delete-item"><span class="dropdown-icon">🗑️</span> Delete</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-row">
+        <div><input type="checkbox" class="custom-checkbox"></div>
+        <div class="identity-cell">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" class="avatar" alt="Arthur">
+          <div class="text-stack">
+            <span class="primary-text">Arthur Cooper</span>
+            <span class="secondary-text">arthur@gmail.com</span>
+          </div>
+        </div>
+        <div>Entrepreneur / CEO</div>
+        <div class="company-cell">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" class="company-logo" alt="Spotify">
+          Spotify
+        </div>
+        <div>Closed</div>
+        <div><span class="status-pill active">Active</span></div>
+        
+        <div class="action-menu-container">
+          <div class="three-dots-trigger">⋮</div>
+          <div class="actions-dropdown">
+            <div class="dropdown-item"><span class="dropdown-icon">👁️</span> View</div>
+            <div class="dropdown-item"><span class="dropdown-icon">✏️</span> Edit</div>
+            <div class="dropdown-item delete-item"><span class="dropdown-icon">🗑️</span> Delete</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-row">
+        <div><input type="checkbox" class="custom-checkbox"></div>
+        <div class="identity-cell">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" class="avatar" alt="Theresa">
+          <div class="text-stack">
+            <span class="primary-text">Theresa Webb</span>
+            <span class="secondary-text">theresa@gmail.com</span>
+          </div>
+        </div>
+        <div>Front-end Developer</div>
+        <div class="company-cell">
+          <img src="https://global.discourse-cdn.com/bubble/original/3X/5/5/551f33011c1d68a5209b532980fa2a4f664a7873.png" class="company-logo" alt="Formcarry">
+          Formcarry
+        </div>
+        <div>Current Customer</div>
+        <div><span class="status-pill inactive">Inactive</span></div>
+        
+        <div class="action-menu-container">
+          <div class="three-dots-trigger">⋮</div>
+          <div class="actions-dropdown">
+            <div class="dropdown-item"><span class="dropdown-icon">👁️</span> View</div>
+            <div class="dropdown-item"><span class="dropdown-icon">✏️</span> Edit</div>
+            <div class="dropdown-item delete-item"><span class="dropdown-icon">🗑️</span> Delete</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-row">
+        <div><input type="checkbox" class="custom-checkbox"></div>
+        <div class="identity-cell">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" class="avatar" alt="Dianne">
+          <div class="text-stack">
+            <span class="primary-text">Dianne Russell</span>
+            <span class="secondary-text">dianne@gmail.com</span>
+          </div>
+        </div>
+        <div>Operations Manager</div>
+        <div class="company-cell">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Dropbox_Icon.svg" class="company-logo" alt="Dropbox">
+          Dropbox
+        </div>
+        <div>Potential Customer</div>
+        <div><span class="status-pill active">Active</span></div>
+        
+        <div class="action-menu-container">
+          <div class="three-dots-trigger">⋮</div>
+          <div class="actions-dropdown">
+            <div class="dropdown-item"><span class="dropdown-icon">👁️</span> View</div>
+            <div class="dropdown-item"><span class="dropdown-icon">✏️</span> Edit</div>
+            <div class="dropdown-item delete-item"><span class="dropdown-icon">🗑️</span> Delete</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-toolbar">
+      <div>Page 2 of 16</div>
+      
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div class="pagination-controls">
+          <button class="page-nav-btn">≪</button>
+          <button class="page-nav-btn">＜</button>
+          <button class="page-number-btn">1</button>
+          <button class="page-number-btn current">2</button>
+          <button class="page-number-btn">3</button>
+          <button class="page-number-btn">4</button>
+          <button class="page-number-btn">5</button>
+          <button class="page-number-btn" style="color: #ced4da; pointer-events: none;">...</button>
+          <button class="page-number-btn">16</button>
+          <button class="page-nav-btn">＞</button>
+          <button class="page-nav-btn">≫</button>
+        </div>
+
+        <div class="rows-per-page">
+          <select>
+            <option>7 / page</option>
+            <option selected>10 / page</option>
+            <option>25 / page</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
